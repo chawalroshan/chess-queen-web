@@ -1,8 +1,7 @@
 {
-  "name": "online-games-web",
+  "name": "gg-chess",
   "version": "1.0.0",
-  "description": "",
-  "main": "app/page.js",
+  "description": "GG Chess — play chess in the browser against the computer or a friend.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
