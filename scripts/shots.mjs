@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test';
 
-const BASE = process.env.BASE_URL || 'http://localhost:3000';
+const BASE = process.env.BASE_URL || 'http://localhost:3111';
 const OUT = 'shots';
 
 const CASES = [
@@ -15,7 +15,7 @@ const run = async () => {
     const ctx = await browser.newContext({ viewport: { width: c.width, height: c.height } });
     const page = await ctx.newPage();
     await page.goto(BASE + '/games/chess-queen', { waitUntil: 'networkidle' });
-    await page.waitForTimeout(1500);
+    await page.waitForTimeout(1000);
     await page.screenshot({ path: OUT + '/chess-queen-' + c.name + '.png' });
     await ctx.close();
   }

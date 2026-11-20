@@ -4,6 +4,8 @@ import { evaluateOutcome, flagOutcome } from './chess.rules';
 
 export const TIME_CONTROLS: Record<string, { base: number; inc: number }> = {
   untimed: { base: 0, inc: 0 },
+  '1+0': { base: 60, inc: 0 },
+  '2+1': { base: 120, inc: 60 },
   '3+0': { base: 180, inc: 0 },
   '5+0': { base: 300, inc: 0 },
   '10+0': { base: 600, inc: 0 },
@@ -31,7 +33,7 @@ export class ChessService {
   private intervals = new Map<string, ReturnType<typeof setInterval>>();
 
   createGame(hostId: string, timeControlId: string = 'untimed', playerColor?: 'w' | 'b'): ChessGame {
-    const id = 'room_' + Math.random().toString(36).slice(2, 10);
+    const id = Math.random().toString(36).slice(2, 8).toUpperCase();
     const tc = TIME_CONTROLS[timeControlId] || TIME_CONTROLS['untimed'];
     const chess = new Chess();
     const game: ChessGame = {
